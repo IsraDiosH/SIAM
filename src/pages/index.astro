@@ -1,59 +1,879 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+const speakers = [
+  {
+    name: 'Dra. Amanda Vitiello Pereira Brosco',
+    role: 'Cirugía general y coloproctología',
+    details: [
+      'Licenciatura en Medicina General por la facultad de Medicina ABC.',
+      'Especialidad en Cirugía General por la facultad de medicina ABC.',
+      'Subespecialidad en Coloproctología por la facultad de medicina ABC.',
+      'Fellowship en Cirugía Robótica por el Instituto “D’OR” de Pesquisa e Ensino (IDOR).',
+      'Miembro Titular de la Sociedad Brasileira de Coloproctología.',
+      'Miembro del Grupo de Estudios da Doença Inflamatória Intestinal do Brasil (GEDIIB).',
+    ],
+  },
+  {
+    name: 'Dr. David Villarreal Vargas',
+    role: 'Urología y cirugía robótica',
+    details: [
+      'Licenciatura en Medico Cirujano y partero por la Universidad de Monterrey con distinción Magna Cum Laude.',
+      'Urología por el HGM “Dr. Eduardo Liceaga” y la UNAM.',
+      'Curso de Alta Especialidad en Laparoscopía Urológica y Reconstrucción Avanzada por el CECAN Chihuahua y la UDEM.',
+      'Fellowship en Cirugía Robótica en el Hospital Nove de Julho en São Paulo, Brasil.',
+      'Certificado por el Colegio Nacional Mexicano de Urología (CONAMEU).',
+      'Certificado como Cirujano Robótico por INTUITIVE.',
+      'Miembro Activo de la Sociedad Mexicana de Urología (SMU), la American Urological Association (AUA) y la European Association of Urology (EAU).',
+    ],
+  },
+  {
+    name: 'Dra. Celia Gabriela Hernández Favela',
+    role: 'Geriatría y cuidados clínicos',
+    details: [
+      'Licenciatura en Medicina Cirujano por la Universidad Autónoma de Coahuila.',
+      'Geriatría por el Instituto Nacional de Ciencias Médicas y Nutrición “Salvador Zubirán”.',
+      'Maestría en Ciencias en Mejora de la Calidad y Seguridad del Paciente.',
+      'Fellowship clínico en Medicina Geriátrica con enfoque en Trauma y Quemados.',
+      'Certificado por el Consejo Nacional De Geriatría.',
+      'Docencia clínica y sesiones académicas, Sunnybrook Health Sciences Centre, Universidad de Toronto.',
+      'Coinvestigadora: valoración geriátrica integral y desenlaces en personas mayores que reciben radioterapia.',
+    ],
+  },
+];
+
+const agenda = [
+  { time: '08:30', title: 'Registro y bienvenida', text: 'Apertura institucional y networking inicial.' },
+  { time: '09:30', title: 'Conferencia inaugural', text: 'Retos actuales de la medicina y la innovación clínica.' },
+  { time: '11:00', title: 'Paneles temáticos', text: 'Discusión de casos, investigación y atención multidisciplinaria.' },
+  { time: '14:00', title: 'Networking', text: 'Espacio para conectar con profesionales y especialistas.' },
+  { time: '16:00', title: 'Cierre y reconocimientos', text: 'Cierre institucional y entrega de reconocimientos.' },
+];
+
+const sponsors = [
+  'Hospitales',
+  'Laboratorios',
+  'Universidades',
+  'Institutos',
+  'Clínicas',
+  'Tecnología',
+  'Academia',
+  'Salud',
+  'Investigación',
+  'Especialidades',
+];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to
-				build a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your{' '}
-				<code>astro.config.mjs</code> file. You can customize your setup with{' '}
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like
-				Tailwind, React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>
-					Edit this page in <code>src/pages/index.astro</code>
-				</li>
-				<li>
-					Edit the site header items in <code>src/components/Header.astro</code>
-				</li>
-				<li>
-					Add your name to the footer in <code>src/components/Footer.astro</code>
-				</li>
-				<li>
-					Check out the included blog posts in <code>src/content/blog/</code>
-				</li>
-				<li>
-					Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code>
-				</li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to{' '}
-				<a href="https://docs.astro.build/">read the docs</a> or{' '}
-				<a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out{' '}
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a> by{' '}
-				<a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAM Congress | Foro Internacional de Actualización Médica</title>
+    <meta
+      name="description"
+      content="Foro internacional de actualización médica con expertos, paneles, agenda y actividades académicas para profesionales y estudiantes."
+    />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <div class="brand">
+          <span class="brand-dot"></span>
+          <span class="brand-name">FORO INTERNACIONAL DE ACTUALIZACIÓN MÉDICA</span>
+        </div>
+        <nav class="nav">
+          <a href="#nosotros">Nosotros</a>
+          <a href="#expositores">Expositores</a>
+          <a href="#agenda">Agenda</a>
+          <a href="#patrocinadores">Patrocinadores</a>
+        </nav>
+        <a class="btn btn-primary" href="/registro">Inscríbete</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Congreso internacional</span>
+            <h1>De la región al mundo: nuevos retos para la medicina.</h1>
+            <p>
+              Un encuentro académico y profesional pensado para impulsar la actualización médica,
+              fortalecer vínculos de colaboración y visibilizar las mejores prácticas del sector de la salud.
+            </p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="/registro">Registrarme ahora</a>
+              <a class="btn btn-secondary" href="#agenda">Ver agenda</a>
+            </div>
+          </div>
+
+          <div class="hero-panel">
+            <div class="panel-box panel-main">
+              <span class="panel-label">Modalidad</span>
+              <strong>Congreso</strong>
+            </div>
+            <div class="panel-box panel-date">
+              <span class="panel-label">Fecha</span>
+              <strong>8 y 9 de abril</strong>
+            </div>
+            <div class="panel-box panel-sub">
+              <span class="panel-label">Horario</span>
+              <strong>8:00 am - 4:00 pm</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="metrics">
+        <div class="container countdown-wrap">
+          <div class="countdown-card">
+            <span class="eyebrow eyebrow-dark">Próximo evento</span>
+            <div class="countdown" id="countdown">
+              <div class="count-item">
+                <strong id="days">00</strong>
+                <span>Días</span>
+              </div>
+              <div class="count-item">
+                <strong id="hours">00</strong>
+                <span>Horas</span>
+              </div>
+              <div class="count-item">
+                <strong id="minutes">00</strong>
+                <span>Minutos</span>
+              </div>
+              <div class="count-item">
+                <strong id="seconds">00</strong>
+                <span>Segundos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="nosotros">
+        <div class="container intro-grid">
+          <div class="intro-visual">
+            <div class="visual-shape shape-large"></div>
+            <div class="visual-shape shape-small"></div>
+            <div class="visual-card">
+              <span>FAM</span>
+            </div>
+          </div>
+
+          <div class="intro-copy">
+            <span class="eyebrow eyebrow-dark">¿Quiénes somos?</span>
+            <h2>Un foro internacional de actualización médica con impacto regional y global.</h2>
+            <p>
+              El FAM UD-CT es un espacio dedicado a la actualización médica de alto nivel, donde convergen
+              especialistas, profesionales, estudiantes e instituciones con una visión clara: transformar la
+              práctica clínica y fortalecer la educación continua.
+            </p>
+            <p>
+              A través de conferencias, experiencias académicas y networking, se promueven contenidos de alto
+              valor con una mirada multidisciplinaria y enfocada en la calidad, la innovación y la formación.
+            </p>
+            <div class="cta-row compact">
+              <a class="btn btn-primary" href="/registro">Solicitar inscripción</a>
+              <a class="btn btn-secondary" href="#expositores">Conocer expositores</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="expositores">
+        <div class="container section-header">
+          <span class="eyebrow eyebrow-dark">Expositores</span>
+          <h2>Especialistas y líderes en salud.</h2>
+        </div>
+
+        <div class="container speakers-grid">
+          {speakers.map((speaker) => (
+            <article class="speaker-card">
+              <div class="avatar-box">{speaker.name.split(' ').map((part) => part[0]).slice(0, 2).join('')}</div>
+              <h3>{speaker.name}</h3>
+              <p class="speaker-role">{speaker.role}</p>
+              <ul class="speaker-details">
+                {speaker.details.map((item) => <li>{item}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section" id="agenda">
+        <div class="container section-header">
+          <span class="eyebrow eyebrow-dark">Agenda</span>
+          <h2>Contenido claro, práctico y de alto nivel.</h2>
+        </div>
+
+        <div class="container agenda-list">
+          {agenda.map((item) => (
+            <article class="agenda-item">
+              <div class="agenda-time">{item.time}</div>
+              <div class="agenda-content">
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section sponsors-section" id="patrocinadores">
+        <div class="container section-header">
+          <span class="eyebrow eyebrow-dark">Patrocinadores</span>
+          <h2>Aliados del congreso.</h2>
+        </div>
+
+        <div class="sponsor-marquee-wrap">
+          <div class="sponsor-marquee">
+            {[...sponsors, ...sponsors].map((item, index) => (
+              <span class="sponsor-pill" key={`${item}-${index}`}>{item}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-final">
+        <div class="container cta-panel">
+          <div>
+            <span class="eyebrow eyebrow-dark">Tu participación importa</span>
+            <h2>Únete al congreso y forma parte de la comunidad médica del futuro.</h2>
+          </div>
+          <div class="cta-row right">
+            <a class="btn btn-primary" href="/registro">Inscribirme como alumno</a>
+            <a class="btn btn-secondary" href="/registro">Inscribirme como médico</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-wrap">
+        <div class="footer-brand">FAM</div>
+        <span>Foro Internacional de Actualización Médica</span>
+      </div>
+    </footer>
+  </body>
 </html>
+
+<script is:inline>
+  const countdownDate = new Date('2027-04-08T08:00:00');
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = countdownDate - now;
+
+    if (diff <= 0) {
+      document.getElementById('days').textContent = '00';
+      document.getElementById('hours').textContent = '00';
+      document.getElementById('minutes').textContent = '00';
+      document.getElementById('seconds').textContent = '00';
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById('days').textContent = String(days).padStart(2, '0');
+    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
+<style is:global>
+  :root {
+    --bg: #f3f3f1;
+    --panel: #ffffff;
+    --ink: #1d2e35;
+    --muted: #5f7077;
+    --primary: #153d40;
+    --primary-2: #28666a;
+    --sage: #a7b8ae;
+    --soft: #edf1ef;
+    --line: #d7ddd9;
+    --purple: #8a5cf6;
+    --shadow: 0 12px 26px rgba(18, 38, 42, 0.08);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  .container {
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+
+  .topbar {
+    background: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(21, 61, 64, 0.12);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-wrap {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    flex: 1;
+  }
+
+  .brand-dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--primary);
+    display: inline-block;
+  }
+
+  .brand-name {
+    font-size: 0.81rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  .nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .nav a:hover {
+    color: var(--primary);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.9rem 1.5rem;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    font-weight: 700;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--primary);
+    border-color: rgba(21, 61, 64, 0.35);
+  }
+
+  .hero {
+    padding: 4.5rem 0 2rem;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--primary-2);
+    font-size: 0.74rem;
+    font-weight: 800;
+  }
+
+  .eyebrow-dark {
+    color: var(--primary);
+  }
+
+  h1, h2, h3, p {
+    margin-top: 0;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+    margin-bottom: 1.25rem;
+    color: var(--primary);
+  }
+
+  .hero-copy p {
+    max-width: 640px;
+    font-size: 1.08rem;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .hero-panel {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .panel-box {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 1.3rem 1.5rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .panel-main {
+    background: var(--primary);
+    color: #fff;
+  }
+
+  .panel-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  .panel-box strong {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    line-height: 1.1;
+  }
+
+  .metrics {
+    padding: 1.2rem 0 2rem;
+  }
+
+  .countdown-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .countdown-card {
+    width: min(100%, 950px);
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    padding: 2rem 1.5rem;
+    box-shadow: var(--shadow);
+  }
+
+  .countdown {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .count-item {
+    background: var(--primary);
+    color: #fff;
+    border-radius: 22px;
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .count-item strong {
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: -0.06em;
+    margin: 0;
+  }
+
+  .count-item span {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.8rem;
+    font-size: 0.75rem;
+    opacity: 0.9;
+  }
+
+  .stats-grid {
+    display: none;
+  }
+
+  .stat-box {
+    display: none;
+  }
+
+  .section {
+    padding: 4.5rem 0;
+  }
+
+  .section-alt {
+    background: rgba(21, 61, 64, 0.02);
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .section-header h2 {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+    color: var(--primary);
+    max-width: 700px;
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .intro-visual {
+    position: relative;
+    min-height: 460px;
+    display: grid;
+    place-items: center;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    overflow: hidden;
+  }
+
+  .visual-shape {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--primary);
+  }
+
+  .shape-large {
+    width: 260px;
+    height: 260px;
+    right: 13%;
+    top: 12%;
+  }
+
+  .shape-small {
+    width: 120px;
+    height: 120px;
+    left: 12%;
+    bottom: 12%;
+    background: var(--primary-2);
+  }
+
+  .visual-card {
+    position: relative;
+    width: min(60%, 280px);
+    aspect-ratio: 1;
+    border-radius: 24px;
+    background: var(--panel);
+    border: 2px solid var(--primary);
+    display: grid;
+    place-items: center;
+    box-shadow: var(--shadow);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    color: var(--primary);
+  }
+
+  .intro-copy p {
+    color: var(--muted);
+    font-size: 1.08rem;
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+  }
+
+  .compact {
+    margin-top: 1.2rem;
+  }
+
+  .speakers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  .speaker-card {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 1.5rem 1.25rem 1.1rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    justify-content: flex-start;
+  }
+
+  .avatar-box {
+    display: grid;
+    place-items: center;
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.4rem;
+    margin: 0 auto 1.1rem;
+  }
+
+  .speaker-card h3 {
+    font-size: 1.4rem;
+    text-align: center;
+    color: var(--primary);
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .speaker-role {
+    margin: 0.4rem 0 0;
+    color: var(--primary-2);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-align: center;
+    font-size: 1.05rem;
+  }
+
+  .speaker-details {
+    margin: 1rem 0 0;
+    padding-left: 1.1rem;
+    color: var(--muted);
+    line-height: 1.8;
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.98rem;
+  }
+
+  @media (max-width: 980px) {
+    .speakers-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 680px) {
+    .speakers-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .agenda-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .agenda-item {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 1.2rem;
+    align-items: center;
+    padding: 1.4rem 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: var(--panel);
+    box-shadow: var(--shadow);
+  }
+
+  .agenda-time {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 0.7rem 1rem;
+    border-radius: 12px;
+    background: var(--soft);
+    color: var(--primary);
+    font-weight: 800;
+  }
+
+  .agenda-content h3 {
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .agenda-content p {
+    color: var(--muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .sponsors-section {
+    background: rgba(21, 61, 64, 0.03);
+  }
+
+  .sponsor-marquee-wrap {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 0.5rem 0 1.5rem;
+  }
+
+  .sponsor-marquee {
+    display: flex;
+    width: max-content;
+    animation: scroll 20s linear infinite;
+    gap: 1rem;
+  }
+
+  .sponsor-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    min-width: 150px;
+    padding: 1rem 1.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    color: var(--primary);
+    font-weight: 700;
+    box-shadow: var(--shadow);
+  }
+
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .cta-final {
+    padding: 2rem 0 5rem;
+  }
+
+  .cta-panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    padding: 2rem 1.5rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .cta-panel h2 {
+    margin: 0.7rem 0 0;
+    color: var(--primary);
+    font-size: clamp(1.7rem, 3vw, 2.8rem);
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+  }
+
+  .right {
+    justify-content: flex-end;
+  }
+
+  .footer {
+    background: var(--primary);
+    color: #fff;
+    padding: 1.2rem 0;
+  }
+
+  .footer-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+  }
+
+  .footer-brand {
+    font-size: 1.1rem;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid,
+    .intro-grid,
+    .cta-panel {
+      grid-template-columns: 1fr;
+      display: grid;
+    }
+
+    .stats-grid,
+    .speakers-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .nav {
+      display: none;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .stats-grid,
+    .speakers-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-panel {
+      padding: 1.5rem 1rem;
+    }
+
+    .agenda-item {
+      grid-template-columns: 1fr;
+    }
+
+    .hero {
+      padding-top: 3rem;
+    }
+
+    .footer-wrap {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

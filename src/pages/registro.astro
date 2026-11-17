@@ -1,0 +1,305 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Registro | FAM Congress">
+  <div class="mx-auto max-w-6xl pb-12">
+    <div class="mb-8 flex items-center justify-between gap-4">
+      <div>
+        <p class="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#28666a]">Inscripción</p>
+        <h1 class="text-4xl font-black tracking-[-0.06em] text-[#153d40] md:text-5xl">Registro y pago</h1>
+      </div>
+      <a href="/" class="rounded-full border border-[#c8d5d4] bg-white px-4 py-2 text-sm font-semibold text-[#153d40] transition hover:border-[#153d40] hover:text-[#153d40]">
+        ← Volver al inicio
+      </a>
+    </div>
+
+    <div class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+      <section class="rounded-[28px] border border-[#dfe7e5] bg-white p-4 shadow-[0_18px_45px_rgba(21,61,64,0.08)] md:p-6">
+        <div class="mb-6 flex flex-wrap gap-3 rounded-2xl bg-[#edf3f1] p-2">
+          <button class="profile-tab is-active" data-target="alumno" type="button">Estudiante</button>
+          <button class="profile-tab " data-target="alumno" type="button">MIP - MPSS - R</button>
+          <button class="profile-tab" data-target="medico" type="button">Médico</button>
+        </div>
+
+        <div class="profile-panel is-active" id="panel-alumno">
+          <form class="space-y-5" method="post" action="/api/payment">
+            <div class="grid gap-5 md:grid-cols-2">
+              <label class="field">
+                <span>Nombre(s)</span>
+                <input type="text" name="alumno_nombre" placeholder="Ej. María Fernanda" required />
+              </label>
+              <label class="field">
+                <span>Apellidos</span>
+                <input type="text" name="alumno_apellidos" placeholder="Ej. López García" required />
+              </label>
+            </div>
+
+            <div class="grid gap-5 md:grid-cols-2">
+              <label class="field">
+                <span>Correo electrónico</span>
+                <input type="email" name="alumno_email" placeholder="correo@ejemplo.com" required />
+              </label>
+              <label class="field">
+                <span>Teléfono</span>
+                <input type="tel" name="alumno_telefono" placeholder="(55) 0000 0000" required />
+              </label>
+            </div>
+
+            <div class="grid gap-5 md:grid-cols-2">
+              <label class="field">
+                <span>Universidad / Institución</span>
+                <input type="text" name="alumno_universidad" placeholder="Nombre de la universidad" required />
+              </label>
+              <label class="field">
+                <span>Carrera</span>
+                <input type="text" name="alumno_carrera" placeholder="Ej. Medicina" required />
+              </label>
+            </div>
+
+            <div class="grid gap-5 md:grid-cols-2">
+              <label class="field">
+                <span>Semestre / nivel</span>
+                <input type="text" name="alumno_semestre" placeholder="Ej. 8° semestre" required />
+              </label>
+              <label class="field">
+                <span>Fecha de nacimiento</span>
+                <input type="date" name="alumno_fecha_nacimiento" required />
+              </label>
+            </div>
+
+            <label class="field">
+              <span>¿Necesitas factura?</span>
+              <select name="alumno_factura" required>
+                <option value="">Selecciona una opción</option>
+                <option value="No">No</option>
+                <option value="Si">Sí, requerir factura</option>
+              </select>
+            </label>
+
+            <div class="rounded-2xl border border-[#dfe7e5] bg-[#f8faf9] p-4">
+              <p class="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#28666a]">Datos para pago</p>
+              <p class="text-sm leading-6 text-slate-600">
+                Este perfil se integra con la pasarela de pago para validar inscripción, confirmar acceso y generar comprobante correspondiente.
+              </p>
+            </div>
+
+            <button type="submit" class="btn-primary mt-2 w-full md:w-auto">Continuar al pago</button>
+          </form>
+        </div>
+
+        <div class="profile-panel" id="panel-medico">
+          <form class="space-y-5" method="post" action="/api/payment">
+            <div class="grid gap-5 md:grid-cols-2">
+              <label class="field">
+                <span>Nombre(s)</span>
+                <input type="text" name="medico_nombre" placeholder="Ej. José Carlos" required />
+              </label>
+              <label class="field">
+                <span>Apellidos</span>
+                <input type="text" name="medico_apellidos" placeholder="Ej. Ramírez Torres" required />
+              </label>
+            </div>
+
+            <div class="grid gap-5 md:grid-cols-2">
+              <label class="field">
+                <span>Correo electrónico</span>
+                <input type="email" name="medico_email" placeholder="correo@ejemplo.com" required />
+              </label>
+              <label class="field">
+                <span>Teléfono</span>
+                <input type="tel" name="medico_telefono" placeholder="(55) 0000 0000" required />
+              </label>
+            </div>
+
+            <div class="grid gap-5 md:grid-cols-2">
+              <label class="field">
+                <span>Especialidad</span>
+                <input type="text" name="medico_especialidad" placeholder="Ej. Medicina interna" required />
+              </label>
+              <label class="field">
+                <span>Cédula profesional</span>
+                <input type="text" name="medico_cedula" placeholder="Ej. 1234567" required />
+              </label>
+            </div>
+
+            <div class="grid gap-5 md:grid-cols-2">
+              <label class="field">
+                <span>Institución / hospital</span>
+                <input type="text" name="medico_institucion" placeholder="Nombre del centro" required />
+              </label>
+              <label class="field">
+                <span>Cargo / puesto</span>
+                <input type="text" name="medico_puesto" placeholder="Ej. Médico residente / especialista" required />
+              </label>
+            </div>
+
+            <div class="grid gap-5 md:grid-cols-2">
+              <label class="field">
+                <span>Ciudad / estado</span>
+                <input type="text" name="medico_ubicacion" placeholder="Ej. Monterrey, Nuevo León" required />
+              </label>
+              <label class="field">
+                <span>¿Necesitas factura?</span>
+                <select name="medico_factura" required>
+                  <option value="">Selecciona una opción</option>
+                  <option value="No">No</option>
+                  <option value="Si">Sí, requerir factura</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="rounded-2xl border border-[#dfe7e5] bg-[#f8faf9] p-4">
+              <p class="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#28666a]">Datos para pago</p>
+              <p class="text-sm leading-6 text-slate-600">
+                Este flujo está pensado para profesionales médicos, con validación de datos clínicos y acceso institucional al congreso.
+              </p>
+            </div>
+
+            <button type="submit" class="btn-primary mt-2 w-full md:w-auto">Continuar al pago</button>
+          </form>
+        </div>
+      </section>
+
+      <aside class="rounded-[28px] border border-[#dfe7e5] bg-[#153d40] p-6 text-white shadow-[0_18px_45px_rgba(21,61,64,0.14)]">
+        <p class="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#a7b8ae]">Resumen</p>
+        <h2 class="text-3xl font-black tracking-[-0.06em]">Tu acceso al congreso</h2>
+
+        <div class="mt-6 space-y-4">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <p class="text-sm uppercase tracking-[0.18em] text-[#cbdad7]">Evento</p>
+            <p class="mt-2 text-xl font-bold">FIAM Congress 2027</p>
+          </div>
+
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <p class="text-sm uppercase tracking-[0.18em] text-[#cbdad7]">Modalidad</p>
+            <p class="mt-2 text-xl font-bold"> Presencial</p>
+          </div>
+
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <p class="text-sm uppercase tracking-[0.18em] text-[#cbdad7]">Incluye</p>
+            <ul class="mt-2 space-y-2 text-sm text-[#e9f0ee]">
+              <li>• Acceso a conferencias</li>
+              <li>• Material académico</li>
+              <li>• Networking institucional</li>
+              <li>• Certificado de participación</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-8 rounded-2xl bg-white p-4 text-[#153d40]">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-semibold uppercase tracking-[0.18em] text-[#28666a]">Tipo</span>
+            <span class="text-xs font-bold uppercase tracking-[0.15em] text-[#153d40]">Selecciona tu perfil</span>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <span class="text-sm text-slate-600">Inscripción</span>
+            <strong class="text-xl font-black" id="summary-type">Alumno</strong>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script is:inline>
+    const tabs = document.querySelectorAll('.profile-tab');
+    const panels = document.querySelectorAll('.profile-panel');
+    const summaryType = document.getElementById('summary-type');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.target;
+
+        tabs.forEach((button) => button.classList.toggle('is-active', button === tab));
+        panels.forEach((panel) => panel.classList.toggle('is-active', panel.id === `panel-${target}`));
+
+        summaryType.textContent = target === 'medico' ? 'Médico' : 'Alumno';
+      });
+    });
+  </script>
+</MainLayout>
+
+<style>
+  .profile-tab {
+    flex: 1 1 180px;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    background: transparent;
+    padding: 0.9rem 1.1rem;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: #153d40;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .profile-tab.is-active {
+    background: #153d40;
+    color: white;
+    box-shadow: 0 10px 22px rgba(21, 61, 64, 0.18);
+  }
+
+  .profile-panel {
+    display: none;
+  }
+
+  .profile-panel.is-active {
+    display: block;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    font-weight: 700;
+    color: #153d40;
+  }
+
+  .field span {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #28666a;
+  }
+
+  .field input,
+  .field select {
+    width: 100%;
+    min-height: 52px;
+    border: 1px solid #dfe7e5;
+    border-radius: 14px;
+    background: #f9faf9;
+    padding: 0.9rem 1rem;
+    font: inherit;
+    color: #153d40;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .field input:focus,
+  .field select:focus {
+    border-color: #153d40;
+    box-shadow: 0 0 0 4px rgba(21, 61, 64, 0.08);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 14px;
+    background: #153d40;
+    color: white;
+    min-height: 52px;
+    padding: 0.95rem 1.4rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    opacity: 0.96;
+  }
+</style>

@@ -1,0 +1,41 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  fluid?: boolean;
+}
+
+const { title, fluid = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900">
+    <header class="border-b border-slate-200 bg-white/95">
+      <div class:list={[
+        'flex items-center justify-between px-4 py-4 md:px-6',
+        fluid ? '' : 'mx-auto max-w-6xl',
+      ]}>
+        <a href="/" class="text-lg font-semibold tracking-tight">Congreso</a>
+        <nav class="flex gap-4 text-sm">
+          <a href="/programa" class="hover:text-blue-700">Programa</a>
+          <a href="/ponentes" class="hover:text-blue-700">Ponentes</a>
+          <a href="/boletos" class="hover:text-blue-700">Boletos</a>
+          <a href="/dashboard" class="hover:text-blue-700">Dashboard</a>
+        </nav>
+      </div>
+    </header>
+    <main class:list={[
+      'px-4 py-8 md:px-6',
+      fluid ? '' : 'mx-auto max-w-6xl',
+    ]}>
+      <slot />
+    </main>
+  </body>
+</html>

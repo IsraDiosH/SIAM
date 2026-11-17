@@ -1,63 +1,47 @@
-# Astro Starter Kit: Blog
+# Sistema de Congresos
 
-```sh
-npm create astro@latest -- --template blog
-```
+Stack base implementado:
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- Astro + TypeScript
+- Tailwind CSS (via plugin de Vite)
+- Adapter Node para despliegue server
+- Prisma ORM con PostgreSQL (Neon)
+- Estructura inicial de landing publica + dashboard admin
+- Carpetas de API y servicios para separar la logica de negocio
 
-Features:
+## Requisitos
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+- Node.js >= 22.23.4
 
-## 🚀 Project Structure
+## Scripts
 
-Inside of your Astro project, you'll see the following folders and files:
+- npm run dev
+- npm run build
+- npm run preview
+- npm run prisma:generate
+- npm run prisma:migrate
+- npm run prisma:studio
 
-```text
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
+## Estructura principal
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- prisma/schema.prisma
+- prisma.config.ts
+- src/layouts/MainLayout.astro
+- src/layouts/AdminLayout.astro
+- src/pages (landing y dashboard)
+- src/pages/api (auth, orders, payments, tickets, attendees, check-in)
+- src/lib (prisma, auth, mercadopago, email, qr)
+- src/services (event, order, payment, ticket, check-in)
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Primer arranque
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+1. Ajustar variables en .env.
+2. Ejecutar npm run prisma:generate.
+3. Ejecutar npm run prisma:migrate.
+4. Ejecutar npm run dev.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Nota importante
 
-## 🧞 Commands
+El entorno actual debe usar Node 22.23.4 o superior. Con versiones inferiores Astro 7 puede mostrar errores de compatibilidad.
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+# placeholder
