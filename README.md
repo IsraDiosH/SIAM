@@ -1,17 +1,19 @@
-# Sistema de Congresos
+# SIAM
+
+## Sistema de Congresos
 
 Stack base implementado:
 
 - Astro + TypeScript
 - Tailwind CSS (via plugin de Vite)
-- Adapter Node para despliegue server
+- Adapter Vercel para despliegue serverless
 - Prisma ORM con PostgreSQL (Neon)
 - Estructura inicial de landing publica + dashboard admin
 - Carpetas de API y servicios para separar la logica de negocio
 
 ## Requisitos
 
-- Node.js >= 22.23.4
+- Node.js >= 20.0.0
 
 ## Scripts
 
@@ -42,6 +44,4 @@ Stack base implementado:
 
 ## Nota importante
 
-El entorno actual debe usar Node 22.23.4 o superior. Con versiones inferiores Astro 7 puede mostrar errores de compatibilidad.
-
-# placeholder
+El entorno actual debe usar Node 20 o superior para construir y desplegar correctamente.
