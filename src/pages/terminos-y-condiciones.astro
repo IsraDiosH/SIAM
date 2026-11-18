@@ -1,0 +1,157 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Términos y Condiciones | FIAM UAD 2027">
+  <section class="mx-auto max-w-4xl space-y-8 pb-16">
+    <header class="space-y-3">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-[#28666a]">Aviso legal</p>
+      <h1 class="text-4xl font-black tracking-[-0.04em] text-[#153d40] md:text-5xl">AVISO DE TÉRMINOS Y CONDICIONES</h1>
+      <p class="text-base font-semibold text-slate-700">FORO INTERNACIONAL DE ACTUALIZACIÓN MÉDICA | UAD 2027</p>
+      <p class="text-slate-600">
+        Al realizar tu inscripción y efectuar el pago correspondiente, aceptas los siguientes términos y condiciones de participación:
+      </p>
+    </header>
+
+    <article class="rounded-3xl border border-[#dfe7e5] bg-white p-6 shadow-[0_18px_45px_rgba(21,61,64,0.08)] md:p-8">
+      <div class="space-y-6 text-slate-700">
+        <section class="space-y-3">
+          <h2 class="text-xl font-extrabold text-[#153d40]">1. Alcance de la inscripción</h2>
+          <p>El pago de inscripción otorga al participante los siguientes beneficios:</p>
+          <ul class="list-disc space-y-2 pl-6">
+            <li>Acceso a las ponencias y actividades académicas programadas durante los dos días del congreso (8 y 9 de abril).</li>
+            <li>Derecho a participar en las rifas de obsequios y regalos proporcionados por los patrocinadores, conforme a las dinámicas y condiciones que establezca la organización.</li>
+            <li>Derecho a recibir una constancia de participación con valor curricular, siempre que se cumpla con el mínimo del 70% de asistencia al programa académico de ambos días.</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-extrabold text-[#153d40]">2. Talleres</h2>
+          <p>
+            El costo de inscripción al congreso NO incluye talleres teóricos ni prácticos. Estos cuentan con un costo adicional y deberán pagarse de manera independiente.
+          </p>
+          <p>
+            Para participar en cualquiera de los talleres será indispensable contar previamente con la inscripción al congreso. El pago de un taller no sustituye ni incluye la inscripción general al evento.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-extrabold text-[#153d40]">3. Política de pagos y cancelaciones</h2>
+          <ul class="list-disc space-y-2 pl-6">
+            <li>Una vez realizado el pago de inscripción, NO se realizarán devoluciones, reembolsos ni cambios de titularidad, independientemente del motivo.</li>
+            <li>El pago deberá efectuarse mediante transferencia bancaria a la cuenta proporcionada por la organización.</li>
+            <li>Es indispensable colocar el nombre completo del participante en el concepto o motivo de la transferencia, seguido de la leyenda: “CUOTA DE RECUPERACIÓN”.</li>
+            <li>El participante será responsable de enviar su comprobante de pago por los medios establecidos para validar y confirmar su inscripción.</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-extrabold text-[#153d40]">4. Cuota de recuperación</h2>
+          <p>
+            Las aportaciones económicas realizadas por concepto de inscripción tienen como finalidad contribuir a cubrir los gastos de organización, logística, infraestructura y realización del Foro Internacional de Actualización Médica.
+          </p>
+          <p>
+            La cuota de recuperación está destinada a apoyar la realización del evento académico y sus actividades. Su naturaleza y tratamiento administrativo y fiscal serán los que correspondan conforme a la normativa aplicable.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-extrabold text-[#153d40]">5. Disposiciones generales</h2>
+          <p>
+            La organización se reserva el derecho de realizar modificaciones justificadas en el programa académico, horarios, ponentes o actividades por causas de fuerza mayor o circunstancias ajenas a su control, procurando siempre mantener la calidad y los objetivos académicos del evento.
+          </p>
+          <p>
+            Al completar el proceso de inscripción y realizar el pago correspondiente, el participante manifiesta haber leído, comprendido y aceptado los presentes términos y condiciones.
+          </p>
+        </section>
+
+        <section class="space-y-2 border-t border-[#dfe7e5] pt-5">
+          <h2 class="text-lg font-extrabold text-[#153d40]">COMITÉ ORGANIZADOR</h2>
+          <p class="font-semibold text-slate-700">Foro Internacional de Actualización Médica | UAD 2027</p>
+        </section>
+      </div>
+    </article>
+
+    <section class="rounded-3xl border border-[#dfe7e5] bg-white p-6 shadow-[0_18px_45px_rgba(21,61,64,0.08)] md:p-8">
+      <h2 class="text-2xl font-black tracking-[-0.02em] text-[#153d40]">Aceptación de términos</h2>
+      <p class="mt-2 text-slate-600">Para confirmar la lectura, completa la validación y acepta los términos.</p>
+
+      <form id="terms-form" class="mt-6 space-y-5" novalidate>
+        <label class="flex items-start gap-3 text-slate-700">
+          <input id="terms-accept" type="checkbox" class="mt-1 h-5 w-5 rounded border-[#b8c9c7]" required />
+          <span>Acepto los términos y condiciones del Foro Internacional de Actualización Médica | UAD 2027.</span>
+        </label>
+
+        <div class="rounded-2xl border border-[#dfe7e5] bg-[#f8faf9] p-4">
+          <p class="mb-2 text-sm font-semibold uppercase tracking-[0.14em] text-[#28666a]">Captcha de verificación</p>
+          <p class="text-slate-700">Resuelve la operación: <strong id="captcha-question">3 + 4</strong></p>
+          <input
+            id="captcha-answer"
+            type="number"
+            inputmode="numeric"
+            min="0"
+            class="mt-3 w-full rounded-xl border border-[#dfe7e5] bg-white px-4 py-3 text-slate-900 outline-none focus:border-[#153d40]"
+            placeholder="Escribe tu respuesta"
+            required
+          />
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <button id="terms-submit" type="submit" class="inline-flex min-h-[50px] items-center justify-center rounded-xl bg-[#153d40] px-5 py-3 font-bold text-white disabled:cursor-not-allowed disabled:opacity-60">
+            Confirmar aceptación
+          </button>
+          <button id="captcha-refresh" type="button" class="inline-flex min-h-[50px] items-center justify-center rounded-xl border border-[#153d40] px-5 py-3 font-bold text-[#153d40]">
+            Generar nuevo captcha
+          </button>
+        </div>
+
+        <p id="terms-result" class="text-sm font-semibold"></p>
+      </form>
+    </section>
+  </section>
+
+  <script is:inline>
+    const form = document.getElementById('terms-form');
+    const checkbox = document.getElementById('terms-accept');
+    const answerInput = document.getElementById('captcha-answer');
+    const question = document.getElementById('captcha-question');
+    const result = document.getElementById('terms-result');
+    const refresh = document.getElementById('captcha-refresh');
+
+    let expected = 0;
+
+    function generateCaptcha() {
+      const a = Math.floor(Math.random() * 8) + 2;
+      const b = Math.floor(Math.random() * 8) + 2;
+      expected = a + b;
+      question.textContent = `${a} + ${b}`;
+      answerInput.value = '';
+      result.textContent = '';
+      result.className = 'text-sm font-semibold';
+    }
+
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      if (!checkbox.checked) {
+        result.textContent = 'Debes aceptar los términos y condiciones para continuar.';
+        result.className = 'text-sm font-semibold text-red-700';
+        return;
+      }
+
+      if (Number(answerInput.value) !== expected) {
+        result.textContent = 'Captcha incorrecto. Intenta nuevamente.';
+        result.className = 'text-sm font-semibold text-red-700';
+        generateCaptcha();
+        return;
+      }
+
+      localStorage.setItem('fiam_terms_accepted', JSON.stringify({ acceptedAt: new Date().toISOString() }));
+      result.textContent = 'Aceptación registrada correctamente. Ya puedes continuar con tu inscripción.';
+      result.className = 'text-sm font-semibold text-[#1b6b4a]';
+    });
+
+    refresh?.addEventListener('click', generateCaptcha);
+    generateCaptcha();
+  </script>
+</MainLayout>

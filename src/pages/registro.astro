@@ -14,147 +14,214 @@ import MainLayout from '../layouts/MainLayout.astro';
       </a>
     </div>
 
+    <div id="payment-feedback" class="mb-6 hidden rounded-2xl border px-4 py-3 text-sm font-semibold"></div>
+
     <div class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
       <section class="rounded-[28px] border border-[#dfe7e5] bg-white p-4 shadow-[0_18px_45px_rgba(21,61,64,0.08)] md:p-6">
         <div class="mb-6 flex flex-wrap gap-3 rounded-2xl bg-[#edf3f1] p-2">
-          <button class="profile-tab is-active" data-target="alumno" type="button">Estudiante</button>
-          <button class="profile-tab " data-target="alumno" type="button">MIP - MPSS - R</button>
+          <button class="profile-tab is-active" data-target="estudiante" type="button">Estudiantes</button>
+          <button class="profile-tab" data-target="residente" type="button">Residentes</button>
           <button class="profile-tab" data-target="medico" type="button">Médico</button>
         </div>
 
-        <div class="profile-panel is-active" id="panel-alumno">
-          <form class="space-y-5" method="post" action="/api/payment">
+        <div class="profile-panel is-active" id="panel-estudiante">
+          <form class="space-y-5" method="post" action="/api/orders">
+            <input type="hidden" name="category" value="estudiante" />
             <div class="grid gap-5 md:grid-cols-2">
               <label class="field">
                 <span>Nombre(s)</span>
-                <input type="text" name="alumno_nombre" placeholder="Ej. María Fernanda" required />
+                <input type="text" name="firstName" placeholder="Ej. Maria Fernanda" required />
               </label>
               <label class="field">
                 <span>Apellidos</span>
-                <input type="text" name="alumno_apellidos" placeholder="Ej. López García" required />
+                <input type="text" name="lastName" placeholder="Ej. Lopez Garcia" required />
               </label>
             </div>
 
             <div class="grid gap-5 md:grid-cols-2">
               <label class="field">
                 <span>Correo electrónico</span>
-                <input type="email" name="alumno_email" placeholder="correo@ejemplo.com" required />
+                <input type="email" name="email" placeholder="correo@ejemplo.com" required />
               </label>
               <label class="field">
                 <span>Teléfono</span>
-                <input type="tel" name="alumno_telefono" placeholder="(55) 0000 0000" required />
+                <input type="tel" name="phone" placeholder="(55) 0000 0000" required />
               </label>
             </div>
 
             <div class="grid gap-5 md:grid-cols-2">
               <label class="field">
                 <span>Universidad / Institución</span>
-                <input type="text" name="alumno_universidad" placeholder="Nombre de la universidad" required />
+                <input type="text" name="institution" placeholder="Nombre de la universidad" required />
               </label>
               <label class="field">
                 <span>Carrera</span>
-                <input type="text" name="alumno_carrera" placeholder="Ej. Medicina" required />
+                <input type="text" name="profile_carrera" placeholder="Ej. Medicina" required />
               </label>
             </div>
 
             <div class="grid gap-5 md:grid-cols-2">
               <label class="field">
                 <span>Semestre / nivel</span>
-                <input type="text" name="alumno_semestre" placeholder="Ej. 8° semestre" required />
+                <input type="text" name="profile_semestre" placeholder="Ej. 8 semestre" required />
               </label>
               <label class="field">
-                <span>Fecha de nacimiento</span>
-                <input type="date" name="alumno_fecha_nacimiento" required />
+                <span>Matricula</span>
+                <input type="text" name="registrationNumber" placeholder="Ej. A01234567" required />
               </label>
             </div>
 
-            <label class="field">
-              <span>¿Necesitas factura?</span>
-              <select name="alumno_factura" required>
-                <option value="">Selecciona una opción</option>
-                <option value="No">No</option>
-                <option value="Si">Sí, requerir factura</option>
-              </select>
-            </label>
-
             <div class="rounded-2xl border border-[#dfe7e5] bg-[#f8faf9] p-4">
-              <p class="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#28666a]">Datos para pago</p>
+              <p class="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#28666a]">Información importante</p>
               <p class="text-sm leading-6 text-slate-600">
-                Este perfil se integra con la pasarela de pago para validar inscripción, confirmar acceso y generar comprobante correspondiente.
+                El monto final de inscripción se muestra unicamente en la pasarela de pago.
+              </p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">
+                La constancia entregada al final del evento sera en base a los datos proporcionados.
               </p>
             </div>
+
+            <p class="text-sm leading-6 text-slate-600">
+              Al continuar aceptas los
+              <a href="/terminos-y-condiciones" class="font-semibold text-[#153d40] underline">términos y condiciones</a>.
+            </p>
 
             <button type="submit" class="btn-primary mt-2 w-full md:w-auto">Continuar al pago</button>
           </form>
         </div>
 
-        <div class="profile-panel" id="panel-medico">
-          <form class="space-y-5" method="post" action="/api/payment">
+        <div class="profile-panel" id="panel-residente">
+          <form class="space-y-5" method="post" action="/api/orders">
+            <input type="hidden" name="category" value="residente" />
             <div class="grid gap-5 md:grid-cols-2">
               <label class="field">
                 <span>Nombre(s)</span>
-                <input type="text" name="medico_nombre" placeholder="Ej. José Carlos" required />
+                <input type="text" name="firstName" placeholder="Ej. Ana Karen" required />
               </label>
               <label class="field">
                 <span>Apellidos</span>
-                <input type="text" name="medico_apellidos" placeholder="Ej. Ramírez Torres" required />
+                <input type="text" name="lastName" placeholder="Ej. Flores Diaz" required />
               </label>
             </div>
 
             <div class="grid gap-5 md:grid-cols-2">
               <label class="field">
                 <span>Correo electrónico</span>
-                <input type="email" name="medico_email" placeholder="correo@ejemplo.com" required />
+                <input type="email" name="email" placeholder="correo@ejemplo.com" required />
               </label>
               <label class="field">
                 <span>Teléfono</span>
-                <input type="tel" name="medico_telefono" placeholder="(55) 0000 0000" required />
+                <input type="tel" name="phone" placeholder="(55) 0000 0000" required />
+              </label>
+            </div>
+
+            <div class="grid gap-5 md:grid-cols-2">
+              <label class="field">
+                <span>Hospital / sede</span>
+                <input type="text" name="institution" placeholder="Nombre del hospital" required />
+              </label>
+              <label class="field">
+                <span>Especialidad</span>
+                <input type="text" name="profile_especialidad" placeholder="Ej. Cirugia general" required />
+              </label>
+            </div>
+
+            <div class="grid gap-5 md:grid-cols-2">
+              <label class="field">
+                <span>Año de residencia</span>
+                <input type="text" name="profile_anioResidencia" placeholder="Ej. R2" required />
+              </label>
+              <label class="field">
+                <span>Matricula o cedula</span>
+                <input type="text" name="registrationNumber" placeholder="Ej. RES-12345 o 1234567" required />
+              </label>
+            </div>
+
+            <div class="rounded-2xl border border-[#dfe7e5] bg-[#f8faf9] p-4">
+              <p class="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#28666a]">Información importante</p>
+              <p class="text-sm leading-6 text-slate-600">
+                El monto final de inscripción se muestra unicamente en la pasarela de pago.
+              </p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">
+                La constancia entregada al final del evento sera en base a los datos proporcionados.
+              </p>
+            </div>
+
+            <p class="text-sm leading-6 text-slate-600">
+              Al continuar aceptas los
+              <a href="/terminos-y-condiciones" class="font-semibold text-[#153d40] underline">términos y condiciones</a>.
+            </p>
+
+            <button type="submit" class="btn-primary mt-2 w-full md:w-auto">Continuar al pago</button>
+          </form>
+        </div>
+
+        <div class="profile-panel" id="panel-medico">
+          <form class="space-y-5" method="post" action="/api/orders">
+            <input type="hidden" name="category" value="medico" />
+            <div class="grid gap-5 md:grid-cols-2">
+              <label class="field">
+                <span>Nombre(s)</span>
+                <input type="text" name="firstName" placeholder="Ej. Jose Carlos" required />
+              </label>
+              <label class="field">
+                <span>Apellidos</span>
+                <input type="text" name="lastName" placeholder="Ej. Ramirez Torres" required />
+              </label>
+            </div>
+
+            <div class="grid gap-5 md:grid-cols-2">
+              <label class="field">
+                <span>Correo electrónico</span>
+                <input type="email" name="email" placeholder="correo@ejemplo.com" required />
+              </label>
+              <label class="field">
+                <span>Teléfono</span>
+                <input type="tel" name="phone" placeholder="(55) 0000 0000" required />
               </label>
             </div>
 
             <div class="grid gap-5 md:grid-cols-2">
               <label class="field">
                 <span>Especialidad</span>
-                <input type="text" name="medico_especialidad" placeholder="Ej. Medicina interna" required />
+                <input type="text" name="profile_especialidad" placeholder="Ej. Medicina interna" required />
               </label>
               <label class="field">
                 <span>Cédula profesional</span>
-                <input type="text" name="medico_cedula" placeholder="Ej. 1234567" required />
+                <input type="text" name="registrationNumber" placeholder="Ej. 1234567" required />
               </label>
             </div>
 
             <div class="grid gap-5 md:grid-cols-2">
               <label class="field">
                 <span>Institución / hospital</span>
-                <input type="text" name="medico_institucion" placeholder="Nombre del centro" required />
+                <input type="text" name="institution" placeholder="Nombre del centro" required />
               </label>
               <label class="field">
                 <span>Cargo / puesto</span>
-                <input type="text" name="medico_puesto" placeholder="Ej. Médico residente / especialista" required />
+                <input type="text" name="profile_puesto" placeholder="Ej. Medico especialista" required />
               </label>
             </div>
 
-            <div class="grid gap-5 md:grid-cols-2">
-              <label class="field">
-                <span>Ciudad / estado</span>
-                <input type="text" name="medico_ubicacion" placeholder="Ej. Monterrey, Nuevo León" required />
-              </label>
-              <label class="field">
-                <span>¿Necesitas factura?</span>
-                <select name="medico_factura" required>
-                  <option value="">Selecciona una opción</option>
-                  <option value="No">No</option>
-                  <option value="Si">Sí, requerir factura</option>
-                </select>
-              </label>
-            </div>
+            <label class="field">
+              <span>Ciudad / estado</span>
+              <input type="text" name="profile_ubicacion" placeholder="Ej. Monterrey, Nuevo Leon" required />
+            </label>
 
             <div class="rounded-2xl border border-[#dfe7e5] bg-[#f8faf9] p-4">
-              <p class="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#28666a]">Datos para pago</p>
+              <p class="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#28666a]">Información importante</p>
               <p class="text-sm leading-6 text-slate-600">
-                Este flujo está pensado para profesionales médicos, con validación de datos clínicos y acceso institucional al congreso.
+                El monto final de inscripción se muestra unicamente en la pasarela de pago.
+              </p>
+              <p class="mt-2 text-sm leading-6 text-slate-600">
+                La constancia entregada al final del evento sera en base a los datos proporcionados.
               </p>
             </div>
+
+            <p class="text-sm leading-6 text-slate-600">
+              Al continuar aceptas los
+              <a href="/terminos-y-condiciones" class="font-semibold text-[#153d40] underline">términos y condiciones</a>.
+            </p>
 
             <button type="submit" class="btn-primary mt-2 w-full md:w-auto">Continuar al pago</button>
           </form>
@@ -194,7 +261,11 @@ import MainLayout from '../layouts/MainLayout.astro';
           </div>
           <div class="mt-4 flex items-center justify-between">
             <span class="text-sm text-slate-600">Inscripción</span>
-            <strong class="text-xl font-black" id="summary-type">Alumno</strong>
+            <strong class="text-xl font-black" id="summary-type">Estudiante</strong>
+          </div>
+          <div class="mt-2 flex items-center justify-between">
+            <span class="text-sm text-slate-600">Pago</span>
+            <strong class="text-xl font-black" id="summary-price">Se muestra en pasarela</strong>
           </div>
         </div>
       </aside>
@@ -205,6 +276,14 @@ import MainLayout from '../layouts/MainLayout.astro';
     const tabs = document.querySelectorAll('.profile-tab');
     const panels = document.querySelectorAll('.profile-panel');
     const summaryType = document.getElementById('summary-type');
+    const summaryPrice = document.getElementById('summary-price');
+    const paymentFeedback = document.getElementById('payment-feedback');
+
+    const labels = {
+      estudiante: { label: 'Estudiante' },
+      residente: { label: 'Residente' },
+      medico: { label: 'Médico' },
+    };
 
     tabs.forEach((tab) => {
       tab.addEventListener('click', () => {
@@ -213,9 +292,84 @@ import MainLayout from '../layouts/MainLayout.astro';
         tabs.forEach((button) => button.classList.toggle('is-active', button === tab));
         panels.forEach((panel) => panel.classList.toggle('is-active', panel.id === `panel-${target}`));
 
-        summaryType.textContent = target === 'medico' ? 'Médico' : 'Alumno';
+        const profile = labels[target];
+
+        if (profile) {
+          summaryType.textContent = profile.label;
+          summaryPrice.textContent = 'Se muestra en pasarela';
+        }
       });
     });
+
+    function showFormErrorFromQuery() {
+      const params = new URLSearchParams(window.location.search);
+      const formError = params.get('form_error');
+
+      if (!formError) return;
+
+      paymentFeedback.classList.remove('hidden');
+      paymentFeedback.className = 'mb-6 rounded-2xl border border-[#fecaca] bg-[#fff1f2] px-4 py-3 text-sm font-semibold text-[#991b1b]';
+      paymentFeedback.textContent = decodeURIComponent(formError);
+    }
+
+    async function confirmPaymentFromReturn() {
+      const params = new URLSearchParams(window.location.search);
+      const paymentId = params.get('payment_id') || params.get('collection_id');
+      const paymentStatus = params.get('payment') || params.get('status');
+
+      if (!paymentStatus && !paymentId) return;
+
+      paymentFeedback.classList.remove('hidden');
+      paymentFeedback.className = 'mb-6 rounded-2xl border border-[#dfe7e5] bg-white px-4 py-3 text-sm font-semibold text-[#153d40]';
+      paymentFeedback.textContent = 'Procesando estado de pago...';
+
+      if (!paymentId) {
+        if (paymentStatus === 'success') {
+          paymentFeedback.className = 'mb-6 rounded-2xl border border-[#b7e4ce] bg-[#f0fff4] px-4 py-3 text-sm font-semibold text-[#1b6b4a]';
+          paymentFeedback.textContent = 'Pago recibido. En breve te enviaremos tu QR al correo registrado.';
+        } else if (paymentStatus === 'pending') {
+          paymentFeedback.className = 'mb-6 rounded-2xl border border-[#fde68a] bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-[#92400e]';
+          paymentFeedback.textContent = 'Tu pago está pendiente de confirmación.';
+        } else {
+          paymentFeedback.className = 'mb-6 rounded-2xl border border-[#fecaca] bg-[#fff1f2] px-4 py-3 text-sm font-semibold text-[#991b1b]';
+          paymentFeedback.textContent = 'No se pudo confirmar el pago. Intenta nuevamente o contacta soporte.';
+        }
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/payments/confirm', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ paymentId }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.ok) {
+          throw new Error(data.message || 'No se pudo confirmar el pago.');
+        }
+
+        const status = data.result?.providerStatus;
+
+        if (status === 'APPROVED') {
+          paymentFeedback.className = 'mb-6 rounded-2xl border border-[#b7e4ce] bg-[#f0fff4] px-4 py-3 text-sm font-semibold text-[#1b6b4a]';
+          paymentFeedback.textContent = 'Pago confirmado. Te enviamos tu QR de acceso al correo registrado.';
+        } else if (status === 'PENDING') {
+          paymentFeedback.className = 'mb-6 rounded-2xl border border-[#fde68a] bg-[#fffbeb] px-4 py-3 text-sm font-semibold text-[#92400e]';
+          paymentFeedback.textContent = 'Pago pendiente de validación por el proveedor.';
+        } else {
+          paymentFeedback.className = 'mb-6 rounded-2xl border border-[#fecaca] bg-[#fff1f2] px-4 py-3 text-sm font-semibold text-[#991b1b]';
+          paymentFeedback.textContent = 'El pago fue rechazado o cancelado. Intenta con otro método.';
+        }
+      } catch (error) {
+        paymentFeedback.className = 'mb-6 rounded-2xl border border-[#fecaca] bg-[#fff1f2] px-4 py-3 text-sm font-semibold text-[#991b1b]';
+        paymentFeedback.textContent = error instanceof Error ? error.message : 'Error al confirmar pago.';
+      }
+    }
+
+    showFormErrorFromQuery();
+    confirmPaymentFromReturn();
   </script>
 </MainLayout>
 

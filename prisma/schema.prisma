@@ -43,6 +43,12 @@ enum PaymentStatus {
   CANCELLED
 }
 
+enum AttendeeType {
+  STUDENT
+  RESIDENT
+  DOCTOR
+}
+
 model User {
   id            String      @id @default(cuid())
   name          String?
@@ -206,12 +212,15 @@ model TicketType {
 model Attendee {
   id                 String    @id @default(cuid())
   eventId            String
+  type               AttendeeType @default(STUDENT)
   firstName          String
   lastName           String
   email              String
   phone              String?
   institution        String?
   registrationNumber String?
+  needsInvoice       Boolean   @default(false)
+  profileData        Json?
 
   event              Event     @relation(fields: [eventId], references: [id], onDelete: Cascade)
   orders             Order[]
@@ -260,6 +269,8 @@ model Payment {
   currency          String        @default("MXN")
   idempotencyKey    String        @unique
   metadata          Json?
+  providerRaw       Json?
+  verifiedAt        DateTime?
 
   order             Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
 
