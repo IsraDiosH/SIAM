@@ -12,3 +12,12 @@ export async function generateTicketQrDataUrl(token: string): Promise<string> {
     width: 320,
   });
 }
+
+export async function generateTicketQrPngBuffer(token: string): Promise<Buffer> {
+  return QRCode.toBuffer(token, {
+    type: 'png',
+    errorCorrectionLevel: 'M',
+    margin: 1,
+    width: 320,
+  });
+}
