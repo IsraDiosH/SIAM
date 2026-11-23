@@ -153,12 +153,12 @@ export async function createRegistrationOrder(input: RegistrationInput) {
   const attendeeName = `${attendee.firstName.trim()} ${attendee.lastName.trim()}`;
 
   const preference = await createCheckoutPreference({
-    title: `${ticketType.name} - ${attendeeName}`,
+    title: `${ticketType.name} - ${attendeeName} - Cuota de Recuperacion`,
     unitPrice: Number(order.amount),
     quantity: 1,
     payerEmail: attendee.email,
-    payerName: attendee.firstName,
-    payerSurname: attendee.lastName,
+    payerName: attendeeName,
+    payerSurname: `${ticketType.name} - Cuota de Recuperacion`,
     externalReference: order.id,
     notificationUrl,
     backUrls: {
