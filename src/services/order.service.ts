@@ -150,12 +150,15 @@ export async function createRegistrationOrder(input: RegistrationInput) {
 
   const publicSiteUrl = process.env.PUBLIC_SITE_URL ?? 'http://localhost:4321';
   const notificationUrl = process.env.MERCADOPAGO_WEBHOOK_URL;
+  const attendeeName = `${attendee.firstName.trim()} ${attendee.lastName.trim()}`;
 
   const preference = await createCheckoutPreference({
-    title: ` ${ticketType.name} Cuota de Recuperacion `,
+    title: `${ticketType.name} - ${attendeeName}`,
     unitPrice: Number(order.amount),
     quantity: 1,
     payerEmail: attendee.email,
+    payerName: attendee.firstName,
+    payerSurname: attendee.lastName,
     externalReference: order.id,
     notificationUrl,
     backUrls: {

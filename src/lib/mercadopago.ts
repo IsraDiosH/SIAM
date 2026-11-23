@@ -7,6 +7,8 @@ export type MercadoPagoPreferenceInput = {
   unitPrice: number;
   quantity?: number;
   payerEmail: string;
+  payerName?: string;
+  payerSurname?: string;
   externalReference: string;
   notificationUrl?: string;
   backUrls?: {
@@ -76,6 +78,8 @@ export async function createCheckoutPreference(input: MercadoPagoPreferenceInput
       },
     ],
     payer: {
+      name: input.payerName,
+      surname: input.payerSurname,
       email: input.payerEmail,
     },
     external_reference: input.externalReference,
