@@ -49,7 +49,7 @@ async function getOrCreateEvent() {
       name: 'FIAM Congress 2027',
       slug: 'fiam-congress-2027',
       description: 'Evento principal de FIAM Congress',
-      location: 'Monterrey, Nuevo Leon',
+      location: 'Torreon, Coahuila, Mexico',
       startsAt: new Date('2027-06-20T08:00:00.000Z'),
       endsAt: new Date('2027-06-22T20:00:00.000Z'),
       status: EventStatus.PUBLISHED,
@@ -152,7 +152,7 @@ export async function createRegistrationOrder(input: RegistrationInput) {
   const notificationUrl = process.env.MERCADOPAGO_WEBHOOK_URL;
 
   const preference = await createCheckoutPreference({
-    title: `FIAM Congress 2027 - ${ticketType.name}`,
+    title: ` ${ticketType.name} Cuota de Recuperacion `,
     unitPrice: Number(order.amount),
     quantity: 1,
     payerEmail: attendee.email,
