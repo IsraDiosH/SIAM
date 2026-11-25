@@ -7,17 +7,17 @@ const CATEGORY_MAP = {
   estudiante: {
     label: 'Estudiante',
     attendeeType: AttendeeType.STUDENT,
-    amount: 650,
+    amount: 677,
   },
   residente: {
     label: 'Residente',
     attendeeType: AttendeeType.RESIDENT,
-    amount: 850,
+    amount: 888,
   },
   medico: {
     label: 'Medico',
     attendeeType: AttendeeType.DOCTOR,
-    amount: 1100,
+    amount: 1151,
   },
 } as const;
 

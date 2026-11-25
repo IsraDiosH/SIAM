@@ -24,6 +24,13 @@ import MainLayout from '../layouts/MainLayout.astro';
           <button class="profile-tab" data-target="medico" type="button">Médico</button>
         </div>
 
+        <div class="mb-6 rounded-2xl border border-[#dfe7e5] bg-[#f8faf9] p-4">
+          <p class="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#28666a]">Cargo por servicio</p>
+          <p class="text-sm leading-6 text-slate-600">
+            Los precios publicados no incluyen el cargo por servicio correspondiente a la operación de pago. Este cargo se calculará de acuerdo con la categoría de inscripción seleccionada y se verá reflejado en el monto total antes de finalizar el pago.
+          </p>
+        </div>
+
         <div class="profile-panel is-active" id="panel-estudiante">
           <form class="space-y-5" method="post" action="/api/orders">
             <input type="hidden" name="category" value="estudiante" />
@@ -73,9 +80,6 @@ import MainLayout from '../layouts/MainLayout.astro';
 
             <div class="rounded-2xl border border-[#dfe7e5] bg-[#f8faf9] p-4">
               <p class="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#28666a]">Información importante</p>
-              <p class="text-sm leading-6 text-slate-600">
-                El monto final de inscripción se muestra unicamente en la pasarela de pago.
-              </p>
               <p class="mt-2 text-sm leading-6 text-slate-600">
                 La constancia entregada al final del evento sera en base a los datos proporcionados.
               </p>
@@ -139,9 +143,6 @@ import MainLayout from '../layouts/MainLayout.astro';
 
             <div class="rounded-2xl border border-[#dfe7e5] bg-[#f8faf9] p-4">
               <p class="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#28666a]">Información importante</p>
-              <p class="text-sm leading-6 text-slate-600">
-                El monto final de inscripción se muestra unicamente en la pasarela de pago.
-              </p>
               <p class="mt-2 text-sm leading-6 text-slate-600">
                 La constancia entregada al final del evento sera en base a los datos proporcionados.
               </p>
@@ -210,9 +211,6 @@ import MainLayout from '../layouts/MainLayout.astro';
 
             <div class="rounded-2xl border border-[#dfe7e5] bg-[#f8faf9] p-4">
               <p class="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#28666a]">Información importante</p>
-              <p class="text-sm leading-6 text-slate-600">
-                El monto final de inscripción se muestra unicamente en la pasarela de pago.
-              </p>
               <p class="mt-2 text-sm leading-6 text-slate-600">
                 La constancia entregada al final del evento sera en base a los datos proporcionados.
               </p>
